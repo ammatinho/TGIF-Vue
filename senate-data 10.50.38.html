@@ -14,114 +14,137 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="card text-center">
-            <div class="card-header">
-                <a class="tittle">TGIF</a>
+    <div id="app">
+        <div class="container-fluid">
+            <div class="card text-center">
+                <div class="card-header">
+                    <a class="tittle">TGIF</a>
 
-                <div class="navigation-dropdowns">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-dark">
-                            <a href="./index 10.50.38.html" class="current">Home</a>
-                        </button>
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Congress 113
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./senate-data 10.50.38.html">Senate</a>
-                            <a class="dropdown-item" href="./house-starter-page 10.50.37.html">House</a>
+                    <div class="navigation-dropdowns">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-dark">
+                                <a href="./index 10.50.38.html" class="current">Home</a>
+                            </button>
+                            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Congress 113
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="./senate-data 10.50.38.html">Senate</a>
+                                <a class="dropdown-item" href="./house-starter-page 10.50.37.html">House</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Attendance
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="./senate-attendance-starter-page.html">Senate</a>
+                                <a class="dropdown-item" href="./house-attendance-starter-page.html">House</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Party Loyalty
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="./senate-party-loyalty-starter-page.html">Senate</a>
+                                <a class="dropdown-item" href="./house-party-loyalty-starter-page.html">House</a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="dropdown">
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Attendance
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./senate-attendance-starter-page.html">Senate</a>
-                            <a class="dropdown-item" href="./house-attendance-starter-page.html">House</a>
-                        </div>
-                    </div>
-
-                    <div class="dropdown">
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Party Loyalty
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./senate-party-loyalty-starter-page.html">Senate</a>
-                            <a class="dropdown-item" href="./house-party-loyalty-starter-page.html">House</a>
-                        </div>
+                    <div class="email">
+                        <i class="icon ion-md-mail"> info@tgif.net</i>
                     </div>
                 </div>
+            </div>
+        </div>
+        <nav>
 
-                <div class="email">
-                    <i class="icon ion-md-mail"> info@tgif.net</i>
+        </nav>
+        <div class="container-fluid">
+            <h2>Senators</h2>
+            <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the
+                U.S.
+                Constitution. Each state is represented by two senators, regardless of population, who serve staggered
+                six-year terms. The Senate has several exclusive powers not granted to the House, including consenting
+                to
+                treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet
+                secretaries, federal judges, other federal executive officials, military officers, regulatory officials,
+                ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by
+                the
+                House.</p>
+
+            <div class="divFilter">
+                <div id="demo" class="filterCheckbox">
+                    <p class="Filter">Filter by party: </p>
+                    <input type="checkbox" name="party_choice" value="R" id="republican" v-model="checkedParties">
+                    <label for="republican">Republican</label>
+
+                    <input type="checkbox" name="party_choice" value="D" id="democrat" v-model="checkedParties">
+                    <label for="democrat">Democrat</label>
+
+                    <input type="checkbox" name="party_choice" value="I" id="independent" v-model="checkedParties">
+                    <label for="independent">Independent</label>
+
                 </div>
             </div>
-            <!-- <img src="logo1.jpg" alt="Logo"> -->
-        </div>
-    </div>
-    <nav>
 
-    </nav>
-    <!--Table container-->
-    <div class="container-fluid">
-        <h2>Senators</h2>
-        <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S.
-            Constitution. Each state is represented by two senators, regardless of population, who serve staggered
-            six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to
-            treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet
-            secretaries, federal judges, other federal executive officials, military officers, regulatory officials,
-            ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the
-            House.</p>
 
-        <div class="divFilter">
-            <div id="demo" class="filterCheckbox">
-                <p class="Filter">Filter by party: </p>
-                <input type="checkbox" name="party_choice" value="R" id="republican" checked>
-                <label for="republican">Republican</label>
-
-                <input type="checkbox" name="party_choice" value="D" id="democrat" checked>
-                <label for="democrat">Democrat</label>
-
-                <input type="checkbox" name="party_choice" value="I" id="independent" checked>
-                <label for="independent">Independent</label>
+            <div class="divFilter">
+                <div class="dropdownlist">
+                    <label class="Filter" for="filteredState">Filter by State</label>
+                    <select name="state" id="filteredState" v-model="selectedState" selected=true>
+                        <option disabled value="">Please select one</option>
+                        <option value="all">--ALL--</option>
+                        <option v-for="option in stateMembers" v-bind:value="option">
+                            {{ option }}
+                        </option>
+                    </select>
+                </div>
             </div>
-        </div>
 
-        <div class="divFilter">
-            <div class="dropdownlist">
-                <label class="Filter" for="filteredState">Filter by State</label>
-                <select name="state" id="filteredState" selected=true>
-                    <option value="all">--ALL--</option>
-                </select>
+            <div id="loader" class="lds-hourglass" v-if="loading"></div>
+
+            <div id="dynamic-content">
+                <div class="divTable" v-if="getFilteredMembers.length > 0">
+                    <table id="mainTable" class="table">
+                        <thead class="thead-dark">
+                            <th>Name</th>
+                            <th>Party</th>
+                            <th>State</th>
+                            <th>Years in Office</th>
+                            <th>% Votes w/ Party</th>
+                        </thead>
+                        <tbody>
+                            <tr v-for="member in getFilteredMembers">
+                                <td>{{member.first_name}} <span v-if="member.middle_name">{{member.middle_name}}</span>
+                                    {{member.last_name}}</td>
+                                <td>{{member.party}}</td>
+                                <td>{{member.state}}</td>
+                                <td>{{member.seniority}}</td>
+                                <td>{{member.votes_with_party_pct}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="imgMessage" v-if="getFilteredMembers.length == 0">
+                        <div class="message" v-if="getFilteredMembers.length == 0">{{ message }}</div>
+                    </div>
+                </div>
             </div>
+
         </div>
 
-        <div id="loader" class="lds-hourglass"></div>
 
-        <div class="divTable">
-            <table id="mainTable" class="table">
-                <!-- <thead class="thead-dark">
-                    <th>Name</th>
-                    <th>Party</th>
-                    <th>State</th>
-                    <th>Years in Office</th>
-                    <th>% Votes w/ Party</th>
-                </thead> -->
-            </table>
+        <div class="card-footer text-muted">
+            2016 TGIF | All Rights Reserved
         </div>
-    
     </div>
-
-
-    <div class="card-footer text-muted">
-        2016 TGIF | All Rights Reserved
-    </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -131,8 +154,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <!-- <script src="scripts/pro-Congress-113-senate.js"></script> -->
-    <script src="scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="scripts/vue.js"></script>
 
 </body>
 

@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="index.css">
 </head>
 
-<body onload="getPartyMembers();">
-    <div class="container-fluid">
-        <div class="card text-center">
-            <div class="card-header">
-                <a class="tittle">TGIF</a>
+<body>
+    <div id="app">
+        <div class="container-fluid">
+            <div class="card text-center">
+                <div class="card-header">
+                    <a class="tittle">TGIF</a>
 
-                <div class="navigation-dropdowns">
+                    <div class="navigation-dropdowns">
                         <div class="dropdown">
                             <button type="button" class="btn btn-dark">
                                 <a href="./index 10.50.38.html" class="current">Home</a>
@@ -29,7 +30,7 @@
                                 <a class="dropdown-item" href="./house-starter-page 10.50.37.html">House</a>
                             </div>
                         </div>
-        
+
                         <div class="dropdown">
                             <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +41,7 @@
                                 <a class="dropdown-item" href="./house-attendance-starter-page.html">House</a>
                             </div>
                         </div>
-        
+
                         <div class="dropdown">
                             <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,210 +54,117 @@
                         </div>
                     </div>
 
-                <div class="email">
-                    <i class="icon ion-md-mail"> info@tgif.net</i>
+                    <div class="email">
+                        <i class="icon ion-md-mail"> info@tgif.net</i>
+                    </div>
                 </div>
             </div>
-            <!-- <img src="logo1.jpg" alt="Logo"> -->
         </div>
-    </div>
-    <nav>
+        <nav>
 
-    </nav>
+        </nav>
 
-    <!--Table container-->
-    <div class="container-fluid">
-        <h2>Attendance</h2>
-        <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house.
-            Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most
-            cases, debates continue even if a majority is not present.</p>
+        <div class="container-fluid">
+            <h2>Attendance</h2>
+            <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house.
+                Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in
+                most
+                cases, debates continue even if a majority is not present.</p>
 
-        <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye"
-            or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters,
-            as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic
-            device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if
-            present) cast the tiebreaking vote.</p>
+            <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating
+                "aye"
+                or "no" when his or her name is announced. The House reserves roll-call votes for the most formal
+                matters,
+                as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic
+                device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if
+                present) cast the tiebreaking vote.</p>
 
-        <h2>Senate at a glance</h2>
-        <div class="divTable">
-        <table id="mainTable" class="table">
-            <thead class="thead-dark">
-                <th>Party</th>
-                <th>Number of Representatives</th>
-                <th>% Voted w/ Party</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Democrats</td>
-                    <td id="democrats"></td>
-                    <td id="democratsVotes"></td>
-                </tr>
+            <div id="loader" class="lds-hourglass" v-if="loading"></div>
 
-                <tr>
-                    <td>Republicans</td>
-                    <td id="republicans"></td>
-                    <td id="republicansVotes"></td>
-                </tr>
+            <div id="dynamic-content" v-else="loading">
+                <h2>Senate at a glance</h2>
+                <div class="divTable">
+                    <table id="mainTable" class="table">
+                        <thead class="thead-dark">
+                            <th>Party</th>
+                            <th>Number of Representatives</th>
+                            <th>% Voted w/ Party</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Democrats</td>
+                                <td>{{getPartyMembers.democratsNumber}}</td>
+                                <td>{{getPartyMembers.democratsVotes}}</td>
+                            </tr>
 
-                <tr>
-                    <td>Independents</td>
-                    <td id="independents"></td>
-                    <td id="independentsVotes"></td>
-                <tr>
+                            <tr>
+                                <td>Republicans</td>
+                                <td>{{getPartyMembers.republicansNumber}}</td>
+                                <td>{{getPartyMembers.republicansVotes}}</td>
+                            </tr>
 
-                <tr class="total">
-                    <td>TOTAL</td>
-                    <td id="total"></td>
-                    <td id="totalVotes"></td>
-                </tr>
-            </tbody>
-        </table>
+                            <tr>
+                                <td>Independents</td>
+                                <td>{{getPartyMembers.independentNumber}}</td>
+                                <td>{{getPartyMembers.independentVotes}}</td>
+                            <tr>
+
+                            <tr>
+                                <td>TOTAL</td>
+                                <td>{{getPartyMembers.totalNumber}}</td>
+                                <td>{{getPartyMembers.totalVotes}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h2>Least Engaged (Bottom 10% Attendance)</h2>
+                <div class="divTable">
+                    <table id="leastSenateAtt" class="table">
+                        <thead class="thead-dark">
+                            <th>Name</th>
+                            <th>Number of Missed Votes</th>
+                            <th>% Missed Votes</th>
+                        </thead>
+
+                        <tbody>
+                            <tr v-for="member in leastMost.leastEngaged">
+                                <td>{{member.name}}</td>
+                                <td>{{member.votes}}</td>
+                                <td>{{member.percentage}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Most Engaged (Top 10% Attendance)</h2>
+                <div class="divTable">
+                    <table id="mostSenateAtt" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Number of Missed Votes</th>
+                                <th>% Missed Votes</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr v-for="member in leastMost.mostEngaged">
+                                <td>{{member.name}}</td>
+                                <td>{{member.votes}}</td>
+                                <td>{{member.percentage}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
-        <!-- <table>
-            <thead>
-                <tr>
-                    <th>Party</th>
-                    <th>Number of Reps</th>
-                    <th>% Voted with Prty</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Republican</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>Democrat</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>Independent</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-            </tbody>
-        </table> -->
 
-        <h2>Least Engaged (Bottom 10% Attendance)</h2>
-        <div class="divTable">
-        <table id="leastSenateAtt" class="table">
-            <thead class="thead-dark">
-                <!-- <tr> -->
-                    <th>Name</th>
-                    <th>Number of Missed Votes</th>
-                    <th>% Missed Votes</th>
-                <!-- </tr> -->
-            </thead>
-        </table>
+        <div class="card-footer text-muted">
+            2016 TGIF | All Rights Reserved
         </div>
-
-        <!-- <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Number of Missed Votes</th>
-                    <th>% Missed</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>vbhrvbrbvher</td>
-                    <td>-hvghcvt-</td>
-                    <td>-vtcrcr-</td>
-                </tr>
-                <tr>
-                    <td>-byu-</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-            </tbody>
-        </table> -->
-
-        <h2>Most Engaged (Top 10% Attendance)</h2>
-        <div class="divTable">
-        <table id="mostSenateAtt" class="table">
-            <thead class="thead-dark">
-                <!-- <tr> -->
-                    <th>Name</th>
-                    <th>Number of Missed Votes</th>
-                    <th>% Missed Votes</th>
-                <!-- </tr> -->
-            </thead>
-        </table>
-        </div>
-        <!-- <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Number of Missed Votes</th>
-                    <th>% Missed</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-            </tbody>
-        </table> -->
-
-    </div>
-
-    <div class="card-footer text-muted">
-        2016 TGIF | All Rights Reserved
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -269,7 +177,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <!-- <script src="scripts/pro-Congress-113-senate.js"></script> -->
-    <script src="scripts/senatestatistics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="scripts/vue.js"></script>
     <!-- <script src="scripts/main.js"></script> -->
 </body>
 

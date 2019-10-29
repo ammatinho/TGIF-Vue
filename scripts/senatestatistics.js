@@ -32,9 +32,12 @@ async function getData(url){
 
 }
 
+//*after this the api data is available in 'members'*
+
 //function w/ all functions used after fetch
 function executeAfterFetch(){
 
+    hiddenLoader();
     getPartyMembers();
     myArrAtt = getArray(membersSenate);
     myArrLoyalty = getArray(membersSenate);
@@ -42,7 +45,13 @@ function executeAfterFetch(){
 
 }
 
-//*after this the api data is available in 'members'*
+function hiddenLoader(){
+    let loading = document.getElementById("loader");
+    loading.classList.add("hidden");
+    let myData = document.getElementById("dynamic-content");
+    myData.classList.remove("hidden");
+ }
+
 
 
 // let membersSenate = data.results[0].members.filter(member => member.votes_with_party_pct != null);

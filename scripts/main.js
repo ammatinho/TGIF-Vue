@@ -43,7 +43,7 @@ async function fetchData(apiUrl) {
         .then(data => data.json())
         .then(data => data.results[0].members)
         .catch(error => console.log(error))
-    members = await (propublicaData.filter(member => member.votes_with_party_pct !== null))
+    members = await (propublicaData.filter(member => member.votes_with_party_pct !== undefined))
     await (executeAfterFetch())
 }
 
@@ -51,6 +51,8 @@ async function fetchData(apiUrl) {
 //function w/ all functions used after fetch
 function executeAfterFetch() {
     console.log("data received! " + members)
+
+    hiddenLoader();
 
     createTable("mainTable", members)
 
@@ -61,10 +63,14 @@ function executeAfterFetch() {
     getFilteredState("filteredState")
     document.getElementById("filteredState").addEventListener("change", displayFilteredTable);
 
-
 }
 
-
+function hiddenLoader(){
+    let loading = document.getElementById("loader");
+    loading.classList.add("hidden");
+    let myData = document.getElementById("dynamic-content");
+    myData.classList.remove("hidden");
+ }
 
 
 // let members = data.results[0].members.filter(member => member.votes_with_party_pct != null);
@@ -87,6 +93,7 @@ function createTable(tableId, members) {
     //create thead and tr (not coming from HTML anymore)
     //create a thead element (document.createElement... etc.)
     let thead = document.createElement('thead');
+    // thead.classList.add("backgroundMickey");
     let row = document.createElement('tr');
 
     row.insertCell().innerHTML = "Name";
@@ -118,7 +125,7 @@ function createTable(tableId, members) {
         newrow.insertCell().innerHTML = party;
         newrow.insertCell().innerHTML = state;
         newrow.insertCell().innerHTML = seniority;
-        newrow.insertCell().innerHTML = votes;
+        newrow.insertCell().innerHTML = votes + "%";
         tbl.appendChild(newrow);
 
     }

@@ -22,6 +22,16 @@ a {
     text-decoration: none;
 }
 
+.card-body{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.cardButton{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .btn-link {
     color: white;
     text-decoration: none;
@@ -141,20 +151,24 @@ table{
 thead {
     background-color: #343a40;
     font-weight: bold;
-
+    color: white;
 }
 
 th, td{
     padding:10px;
 }
 
-tr:nth-child(odd){
+tr:nth-child(even){
     background-color:whitesmoke;
 }
 
 tr.total{
-    background-color: white;
+    background-color: whitesmoke;
 }
+
+/* tr .backgroundMickey{
+    background-color: crimson;
+} */
 
 h2{
     margin-left: 10%;
@@ -212,6 +226,7 @@ p{
     /* margin-right: 50%;
     /* margin-top: 10%; */ 
     margin-top: 5%;
+    margin-bottom: 5%;
 
   }
   .lds-hourglass:after {
@@ -243,3 +258,47 @@ p{
 .hidden{
     display:none;
 } 
+
+.message{
+    /* background-color: whitesmoke; */
+    color: grey;
+    text-decoration: none;
+    /* margin-bottom: 5%; */
+    margin-top: 17%;
+    text-align: center;
+    margin-right: 35%;
+    margin-left: 35%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    /* border-top: 2px solid grey; */
+    /* border-bottom: 2px solid grey; */
+    /* font-weight: bold; */
+    font-size: 0.9em; 
+}
+
+.message:hover{
+    background-color: transparent;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.imgMessage{
+    background-image: url('noresults1.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    /* background-attachment: fixed; */
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* padding-top: 2%; */
+    padding-bottom: 2%;
+    /* margin-bottom: 5%; */
+    /* margin-top: 5%; */
+}
+
+/* @media screen and (min-width: 480px) {
+    .card-header {width: 200px; float: left;}
+    .message {margin-left: 216px;}
+} */

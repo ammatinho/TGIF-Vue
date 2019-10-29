@@ -35,15 +35,16 @@ async function getData(url){
 //function w/ all functions used after fetch
 function executeAfterFetch(){
     //insert function that manages visibilty of tables/loader
-    myFunction();
+    hiddenLoader();
+
     getPartyMembers();
     myArrAtt = getArray(membersHouse);
     myArrLoyalty = getArray(membersHouse);
     someName();
 
 }
-//function() hides loader (applying hidden class) and removes hudden class from div containing tables
- function myFunction(){
+//function() hides loader (applying hidden class) and removes hidden class from div containing tables
+function hiddenLoader(){
     let loading = document.getElementById("loader");
     loading.classList.add("hidden");
     let myData = document.getElementById("dynamic-content");
@@ -52,16 +53,11 @@ function executeAfterFetch(){
 
 
 
-
-//*after this the api data is available in 'members'*
-
-
 // let membersHouse = data.results[0].members.filter(member => member.votes_with_party_pct != null);
 // console.log(membersHouse);
 
 
 // get the number of members in each party
-
 
 function getPartyMembers() {
     let democrats = [];
@@ -291,16 +287,4 @@ if (currentPage == "house-attendance-starter-page.html") {
     createTableLoyalty("leastHouseLoyalty", bottomTenPercentArrayLoyalty);
     createTableLoyalty("mostHouseLoyalty", topTenPercentArrayLoyalty);
 }
-}
-
-
-
-const loading = document.getElementById("loader");
-
-if (loading) {
-
-    //display loader
-
-} else {
-    document.getElementsByClassName.add("h4", "divTable", "table");
 }

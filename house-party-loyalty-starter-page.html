@@ -10,140 +10,156 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="card text-center">
-            <div class="card-header">
-                <a class="tittle">TGIF</a>
+    <div id="app">
+        <div class="container-fluid">
+            <div class="card text-center">
+                <div class="card-header">
+                    <a class="tittle">TGIF</a>
 
-                <div class="navigation-dropdowns">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-dark">
-                            <a href="./index 10.50.38.html" class="current">Home</a>
-                        </button>
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Congress 113
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./senate-data 10.50.38.html">Senate</a>
-                            <a class="dropdown-item" href="./house-starter-page 10.50.37.html">House</a>
+                    <div class="navigation-dropdowns">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-dark">
+                                <a href="./index 10.50.38.html" class="current">Home</a>
+                            </button>
+                            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Congress 113
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="./senate-data 10.50.38.html">Senate</a>
+                                <a class="dropdown-item" href="./house-starter-page 10.50.37.html">House</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Attendance
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="./senate-attendance-starter-page.html">Senate</a>
+                                <a class="dropdown-item" href="./house-attendance-starter-page.html">House</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Party Loyalty
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="./senate-party-loyalty-starter-page.html">Senate</a>
+                                <a class="dropdown-item" href="./house-party-loyalty-starter-page.html">House</a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="dropdown">
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Attendance
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./senate-attendance-starter-page.html">Senate</a>
-                            <a class="dropdown-item" href="./house-attendance-starter-page.html">House</a>
-                        </div>
-                    </div>
-
-                    <div class="dropdown">
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Party Loyalty
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./senate-party-loyalty-starter-page.html">Senate</a>
-                            <a class="dropdown-item" href="./house-party-loyalty-starter-page.html">House</a>
-                        </div>
+                    <div class="email">
+                        <i class="icon ion-md-mail"> info@tgif.net</i>
                     </div>
                 </div>
+            </div>
+        </div>
+        <nav>
 
-                <div class="email">
-                    <i class="icon ion-md-mail"> info@tgif.net</i>
+        </nav>
+
+        <div class="container-fluid">
+            <h2>Party Loyalty</h2>
+            <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans
+                respectively,
+                tend to be the most faithful in voting for their party's nominee for office and legislation that backs
+                their
+                party's agenda. </p>
+
+            <div id="loader" class="lds-hourglass" v-if="loading"></div>
+
+            <div id="dynamic-content" v-else="loading">
+                <h4 class="h4">Senate at a glance</h4>
+                <div id="divTable" class="divTable">
+                    <table id="mainTable" class="table">
+                        <thead class="thead-dark">
+                            <th>Party</th>
+                            <th>Number of Representatives</th>
+                            <th>% Voted w/ Party</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Democrats</td>
+                                <td>{{getPartyMembers.democratsNumber}}</td>
+                                <td>{{getPartyMembers.democratsVotes}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Republicans</td>
+                                <td>{{getPartyMembers.republicansNumber}}</td>
+                                <td>{{getPartyMembers.republicansVotes}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Independents</td>
+                                <td>{{getPartyMembers.independentNumber}}</td>
+                                <td>{{getPartyMembers.independentVotes}}</td>
+                            <tr>
+
+                            <tr>
+                                <td>TOTAL</td>
+                                <td>{{getPartyMembers.totalNumber}}</td>
+                                <td>{{getPartyMembers.totalVotes}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
+
+
+                <h4>Least Loyal (Bottom 10% of Party)</h4>
+                <div class="divTable">
+                    <table id="leastHouseLoyalty" class="table">
+                        <thead class="thead-dark">
+                            <th>Name</th>
+                            <th>Number of Party Votes</th>
+                            <th>% Party Votes</th>
+                        </thead>
+
+                        <tbody>
+                            <tr v-for="member in leastMost.leastLoyal">
+                                <td>{{member.name}}</td>
+                                <td>{{member.votes}}</td>
+                                <td>{{member.percentage}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Most Loyal (Top 10% of Party)</h4>
+                <div class="divTable">
+                    <table id="mostHouseLoyalty" class="table">
+                        <thead class="thead-dark">
+                            <th>Name</th>
+                            <th>Number of Party Votes</th>
+                            <th>% Party Votes</th>
+                        </thead>
+
+                        <tbody>
+                            <tr v-for="member in leastMost.mostLoyal">
+                                <td>{{member.name}}</td>
+                                <td>{{member.votes}}</td>
+                                <td>{{member.percentage}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
             </div>
-            <!-- <img src="logo1.jpg" alt="Logo"> -->
         </div>
-    </div>
-    <nav>
 
-    </nav>
-    <!--Table container-->
-
-    <div class="container-fluid">
-        <!-- <div class="container1"> -->
-        <h2>Party Loyalty</h2>
-        <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans
-            respectively,
-            tend to be the most faithful in voting for their party's nominee for office and legislation that backs
-            their
-            party's agenda. </p>
-
-        <div id="loader" class="lds-hourglass"></div>
-
-        <div id="dynamic-content"class="hidden">
-            <h4 class="h4">Senate at a glance</h4>
-            <div id="divTable" class="divTable">
-                <table id="mainTable" class="table">
-                    <thead class="thead-dark">
-                        <th>Party</th>
-                        <th>Number of Representatives</th>
-                        <th>% Voted w/ Party</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Democrats</td>
-                            <td id="democrats"></td>
-                            <td id="democratsVotes"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Republicans</td>
-                            <td id="republicans"></td>
-                            <td id="republicansVotes"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Independents</td>
-                            <td id="independents"></td>
-                            <td id="independentsVotes"></td>
-                        <tr>
-
-                        <tr class="total">
-                            <td>TOTAL</td>
-                            <td id="total"></td>
-                            <td id="totalVotes"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
-
-            <h4>Least Loyal (Bottom 10% of Party)</h4>
-            <div class="divTable">
-                <table id="leastHouseLoyalty" class="table">
-                    <thead class="thead-dark">
-                        <th>Name</th>
-                        <th>Number of Party Votes</th>
-                        <th>% Party Votes</th>
-                    </thead>
-                </table>
-            </div>
-
-
-            <h4>Most Loyal (Top 10% of Party)</h4>
-            <div class="divTable">
-                <table id="mostHouseLoyalty" class="table">
-                    <thead class="thead-dark">
-                        <th>Name</th>
-                        <th>Number of Party Votes</th>
-                        <th>% Party Votes</th>
-                    </thead>
-                </table>
-            </div>
-
-
+        <div class="card-footer text-muted">
+            2016 TGIF | All Rights Reserved
         </div>
-    </div>    
 
-    <div class="card-footer text-muted">
-        2016 TGIF | All Rights Reserved
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -156,7 +172,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <!-- <script src="scripts/pro-Congress-113-house.js"></script> -->
-    <script src="scripts/housestatistics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="scripts/vue.js"></script>
     <!-- <script src="scripts/main.js"></script> -->
 </body>
 
