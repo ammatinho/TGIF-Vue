@@ -3,7 +3,7 @@
 NOTE: If live data is not loading, API key might have expired!!!!!
 
 Created a Congressional tracking web site for Transparent Government in Fact (TGIF), a non-partisan non-profit 
-organization working to increase the public’s involvement in government.
+organisation working to increase the public’s involvement in government.
 
 Steps of the process:
 
@@ -19,5 +19,5 @@ Technologies used:
 
 < JavaScript and JavaScript libraries, such as jQuery and Vue JS AJAX (Asynchronous JavaScript and XML) to 
 communicate directly with web services from a web page JSON (JavaScript Object Notation) RESTful (Representational 
-State Transfer) APIs (Application Program Interfaces) to standardize the messages used to get JSON objects with AJAX 
+State Transfer) APIs (Application Program Interfaces) to standardise the messages used to get JSON objects with AJAX 
 calls />
