@@ -7,14 +7,18 @@ organisation working to increase the public’s involvement in government.
 
 Steps of the process:
 
-- Obtained API key for the ProPublica Congress API and the JSON objects for the two chambers of Congress
-- Created HTML pages that use JavaScript to display the JSON data
-- Added filters by 3 party checkboxes - Democrats, Republicans, Independents
-- Added drop-down menu
-- Calculate the statistics and algorithms in Javascript
+• Obtained API key for the ProPublica Congress API and the JSON objects for the two chambers of Congress
 
+• Created HTML pages that use JavaScript to display the JSON data
+
+• Added filters by 3 party checkboxes - Democrats, Republicans, Independents
+
+• Added drop-down menu
+
+• Calculate the statistics and algorithms in Javascript
+#
 Visit my project here - 
-
+#
 Technologies used:
 
 < JavaScript and JavaScript libraries, such as jQuery and Vue JS AJAX (Asynchronous JavaScript and XML) to 
